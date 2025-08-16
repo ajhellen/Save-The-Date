@@ -1,3 +1,161 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Save the Date — Alex & Craig</title>
+  <meta name="description" content="Save the date for Alex & Craig! Share your mailing address so we can send a formal invitation." />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: 'Georgia', serif;
+      background: url('https://github.com/ajhellen/Save-The-Date/raw/main/Save%20the%20date%20background.png?raw=true') center/cover repeat;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .title-box {
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      margin: 0 0 0.5rem;
+    }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 300;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    form {
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      font-weight: bold;
+      width: 100%;
+      max-width: 600px;
+      margin-top: 1rem;
+      display: block;
+    }
+
+    input {
+      width: 100%;
+      max-width: 600px;
+      padding: 0.75rem;
+      margin-top: 0.25rem;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      background-color: #f8f4ef;
+      color: #3c4354;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    .success, .error {
+      display: none;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-radius: 8px;
+      background: white;
+      color: #333;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .success {
+      background: #ecfdf5;
+      color: #065f46;
+    }
+
+    .error {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+
+    @media (max-width: 600px) {
+      .title-box {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      h2 {
+        font-size: 0.95rem;
+      }
+
+      input, label, button {
+        font-size: 1rem;
+        width: 100%;
+      }
+
+      form {
+        padding: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="title-box">
+    <h1>Save Our Date</h1>
+    <h2>Alex & Craig · July 25th, 2026 · Livingston, MT</h2>
+  </div>
+
+  <form id="addrForm" action="https://script.google.com/macros/s/AKfycbwX03iEoM_YqQuSCbnY_SeNC5bxDyFmFi5YkFYayAsoRVRt3Se38OOApKeYpqo89Zne/exec" method="POST">
+    <label for="fullName">Full Name(s) *</label>
+    <input id="fullName" name="fullName" required />
+
+    <label for="street">Street Address *</label>
+    <input id="street" name="street" required />
+
+    <label for="line2">Address Line 2</label>
+    <input id="line2" name="line2" />
+
+    <label for="city">City *</label>
+    <input id="city" name="city" required />
+
+    <label for="state">State/Province *</label>
+    <input id="state" name="state" required />
+
+    <label for="postal">Postal Code *</label>
+    <input id="postal" name="postal" required />
+
+    <label for="country">Country</label>
+    <input id="country" name="country" placeholder="United States" />
+
+    <button type="submit" id="submitBtn">Send Address</button>
+    <div class="success" id="ok">Thank you! Your info was submitted 🎉</div>
+    <div class="error" id="err">Something went wrong. Please try again later.</div>
+  </form>
+
 <script>
   let submitted = false; // flag to prevent double submit
 
@@ -41,3 +199,7 @@
 
   document.getElementById('addrForm').addEventListener('submit', handleSubmit);
 </script>
+
+
+</body>
+</html>
