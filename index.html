@@ -1,5 +1,5 @@
 <!--
-DIY Save‑the‑Date Microsite — Styled Version (centered layout)
+DIY Save‑the‑Date Microsite — Styled Version (form post workaround)
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -97,7 +97,8 @@ DIY Save‑the‑Date Microsite — Styled Version (centered layout)
     <h1>Save Our Date</h1>
     <h2>Alex & Craig · July 25th, 2026</h2>
   </div>
-  <form id="addrForm">
+
+  <form id="addrForm" action="https://script.google.com/macros/s/AKfycbwX03iEoM_YqQuSCbnY_SeNC5bxDyFmFi5YkFYayAsoRVRt3Se38OOApKeYpqo89Zne/exec" method="POST" target="hidden_iframe" onsubmit="handleSubmit()">
     <label for="fullName">Full Name(s) *</label>
     <input id="fullName" name="fullName" required />
 
@@ -124,43 +125,16 @@ DIY Save‑the‑Date Microsite — Styled Version (centered layout)
     <div class="error" id="err">Something went wrong. Please try again later.</div>
   </form>
 
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
   <script>
-    const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwX03iEoM_YqQuSCbnY_SeNC5bxDyFmFi5YkFYayAsoRVRt3Se38OOApKeYpqo89Zne/exec";
-
-    const form = document.getElementById('addrForm');
-    const btn = document.getElementById('submitBtn');
-    const ok = document.getElementById('ok');
-    const err = document.getElementById('err');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      btn.disabled = true;
-      ok.style.display = 'none';
+    function handleSubmit() {
+      const ok = document.getElementById('ok');
+      const err = document.getElementById('err');
+      ok.style.display = 'block';
       err.style.display = 'none';
-
-      const data = Object.fromEntries(new FormData(form).entries());
-      data.siteMeta = {
-        userAgent: navigator.userAgent,
-        tz: Intl.DateTimeFormat().resolvedOptions().timeZone,
-        ts: new Date().toISOString()
-      };
-
-      try {
-        const res = await fetch(GAS_WEB_APP_URL, {
-          method: 'POST',
-          mode: 'cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        if (!res.ok) throw new Error();
-        form.reset();
-        ok.style.display = 'block';
-      } catch (e) {
-        err.style.display = 'block';
-      } finally {
-        btn.disabled = false;
-      }
-    });
+      document.getElementById('addrForm').reset();
+    }
   </script>
 </body>
 </html>
