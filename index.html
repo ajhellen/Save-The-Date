@@ -1,23 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  ...
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Save the Date — Alex & Partner</title>
+  <meta name="description" content="Save the date and share your mailing address so we can send you a formal invitation." />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background: #fefefe;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      margin-top: 0;
+      color: #444;
+    }
+    form {
+      margin-top: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    button {
+      background: rebeccapurple;
+      color: white;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .success, .error {
+      display: none;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-radius: 8px;
+    }
+    .success {
+      background: #ecfdf5;
+      color: #065f46;
+    }
+    .error {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+  </style>
 </head>
 <body>
-  ...
+  <div class="container">
+    <h1>Alex & Partner are getting married! 💍</h1>
+    <p>We’d love to send you a formal invitation. Please share your mailing address below.</p>
+    <form id="addrForm">
+      <label for="fullName">Full Name *</label>
+      <input id="fullName" name="fullName" required />
+
+      <label for="envName">Envelope Name</label>
+      <input id="envName" name="envName" />
+
+      <label for="email">Email *</label>
+      <input id="email" name="email" type="email" required />
+
+      <label for="phone">Phone</label>
+      <input id="phone" name="phone" type="tel" />
+
+      <label for="street">Street Address *</label>
+      <input id="street" name="street" required />
+
+      <label for="line2">Address Line 2</label>
+      <input id="line2" name="line2" />
+
+      <label for="city">City *</label>
+      <input id="city" name="city" required />
+
+      <label for="state">State/Province *</label>
+      <input id="state" name="state" required />
+
+      <label for="postal">Postal Code *</label>
+      <input id="postal" name="postal" required />
+
+      <label for="country">Country</label>
+      <input id="country" name="country" placeholder="United States" />
+
+      <label for="notes">Notes (dietary restrictions, plus-one name, etc.)</label>
+      <textarea id="notes" name="notes" rows="3"></textarea>
+
+      <button type="submit" id="submitBtn">Submit</button>
+      <div class="success" id="ok">Thank you! Your info was submitted 🎉</div>
+      <div class="error" id="err">Something went wrong. Please try again later.</div>
+    </form>
+  </div>
 
   <script>
-    // 1) Paste your Apps Script Web App URL here
-    const GAS_WEB_APP_URL = "https://script.google.com/macros/s/PASTE_WEB_APP_URL_HERE/exec"; // TODO: replace
+    const GAS_WEB_APP_URL = "https://script.google.com/macros/s/PASTE_WEB_APP_URL_HERE/exec";
 
-    // 2) Minimal client‑side validation & POST
     const form = document.getElementById('addrForm');
     const btn = document.getElementById('submitBtn');
     const ok = document.getElementById('ok');
     const err = document.getElementById('err');
-    const honeypot = document.getElementById('website');
 
     form.addEventListener('submit', async (e) => {
-      ...
+      e.preventDefault();
+      btn.disabled = true;
+      ok.style.display = 'none';
+      err.style.display = 'none';
+
+      const data = Object.fromEntries(new FormData(form).entries());
+      data.siteMeta = {
+        userAgent: navigator.userAgent,
+        tz: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        ts: new Date().toISOString()
+      };
+
+      try {
+        const res = await fetch(GAS_WEB_APP_URL, {
+          method: 'POST',
+          mode: 'cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (!res.ok) throw new Error();
+        form.reset();
+        ok.style.display = 'block';
+      } catch (e) {
+        err.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+      }
     });
   </script>
+</body>
+</html>
