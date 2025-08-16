@@ -13,6 +13,7 @@
       color: white;
       text-align: center;
       padding: 100px 20px;
+      overflow: hidden;
     }
 
     .overlay {
@@ -22,6 +23,8 @@
       margin: auto;
       border-radius: 12px;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
@@ -33,37 +36,62 @@
       font-size: 1.4em;
       line-height: 1.6em;
     }
+
+    /* Twinkle overlay (faint glitter) */
+    .twinkle {
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(white 1px, transparent 1px);
+      background-size: 4px 4px;
+      opacity: 0.08;
+      animation: shimmer 2s infinite;
+      z-index: 1;
+    }
+
+    @keyframes shimmer {
+      0% { opacity: 0.08; }
+      50% { opacity: 0.15; }
+      100% { opacity: 0.08; }
+    }
   </style>
 </head>
 <body>
+  <div class="twinkle"></div>
+
   <div class="overlay">
-    <h1>Thank You!</h1>
+    <h1>🎉 Thank You!</h1>
     <p>💌 Thank you so much for sharing your address with us!<br><br>
-    📬 A physical copy of our Save the Date will be arriving in your mailbox soon,<br>
+    📬 Our official Save the Date will be arriving in your mailbox soon,<br>
     followed by a formal invitation.<br><br>
-    🥂 We can’t wait to celebrate together on <strong>July 25th, 2026</strong> in <strong>Livingston, MT</strong>!</p>
+    💕 We can’t wait to celebrate with you!</p>
   </div>
 
   <!-- Confetti animation -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
-    const duration = 4000;
+    const duration = 2000;
     const end = Date.now() + duration;
 
     (function frame() {
       confetti({
-        particleCount: 5,
+        particleCount: 6,
         angle: 60,
-        spread: 55,
+        spread: 70,
         origin: { x: 0 },
-        colors: ['#C0C0C0', '#D3D3D3', '#A9A9A9']
+        scalar: 1.2,
+        colors: ['#ffffff', '#eeeeee', '#dcdcdc', '#C0C0C0', '#b0b0b0']
       });
       confetti({
-        particleCount: 5,
+        particleCount: 6,
         angle: 120,
-        spread: 55,
+        spread: 70,
         origin: { x: 1 },
-        colors: ['#C0C0C0', '#D3D3D3', '#A9A9A9']
+        scalar: 1.2,
+        colors: ['#ffffff', '#eeeeee', '#dcdcdc', '#C0C0C0', '#b0b0b0']
       });
 
       if (Date.now() < end) {
