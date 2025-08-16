@@ -1,5 +1,5 @@
 <!--
-DIY Save‑the‑Date Microsite — Styled Version
+DIY Save‑the‑Date Microsite — Styled Version (no wrapper)
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -12,17 +12,10 @@ DIY Save‑the‑Date Microsite — Styled Version
   <style>
     body {
       margin: 0;
-      font-family: 'Georgia', serif;
-      background: url('https://github.com/ajhellen/Save-The-Date/raw/main/Save%20the%20date%20background.png?raw=true') center/cover repeat;
-      color: white;
-    }
-    .wrapper {
-      background-color: rgba(60, 67, 84, 0.95);
       padding: 2rem;
-      max-width: 700px;
-      margin: 2rem auto;
-      border-radius: 20px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+      font-family: 'Georgia', serif;
+      background: url('https://github.com/YOUR_USERNAME/YOUR_REPO/raw/main/assets/floral-background.png') center/cover repeat;
+      color: white;
     }
     h1 {
       font-family: 'Great Vibes', cursive;
@@ -34,8 +27,12 @@ DIY Save‑the‑Date Microsite — Styled Version
       font-size: 1rem;
       font-weight: 300;
       text-align: center;
-      margin: 0 0 1.5rem;
+      margin: 0 0 2rem;
       letter-spacing: 1px;
+    }
+    form {
+      max-width: 700px;
+      margin: 0 auto;
     }
     label {
       font-weight: bold;
@@ -66,6 +63,8 @@ DIY Save‑the‑Date Microsite — Styled Version
       padding: 1rem;
       margin-top: 1rem;
       border-radius: 8px;
+      max-width: 700px;
+      margin-inline: auto;
     }
     .success {
       background: #ecfdf5;
@@ -78,48 +77,46 @@ DIY Save‑the‑Date Microsite — Styled Version
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <h1>Save Our Date</h1>
-    <h2>Alex & Craig · July 25th, 2026</h2>
-    <form id="addrForm">
-      <label for="fullName">Full Name *</label>
-      <input id="fullName" name="fullName" required />
+  <h1>Save Our Date</h1>
+  <h2>Alex & Craig · July 25th, 2026</h2>
+  <form id="addrForm">
+    <label for="fullName">Full Name *</label>
+    <input id="fullName" name="fullName" required />
 
-      <label for="envName">Envelope Name</label>
-      <input id="envName" name="envName" />
+    <label for="envName">Envelope Name</label>
+    <input id="envName" name="envName" />
 
-      <label for="email">Email *</label>
-      <input id="email" name="email" type="email" required />
+    <label for="email">Email *</label>
+    <input id="email" name="email" type="email" required />
 
-      <label for="phone">Phone</label>
-      <input id="phone" name="phone" type="tel" />
+    <label for="phone">Phone</label>
+    <input id="phone" name="phone" type="tel" />
 
-      <label for="street">Street Address *</label>
-      <input id="street" name="street" required />
+    <label for="street">Street Address *</label>
+    <input id="street" name="street" required />
 
-      <label for="line2">Address Line 2</label>
-      <input id="line2" name="line2" />
+    <label for="line2">Address Line 2</label>
+    <input id="line2" name="line2" />
 
-      <label for="city">City *</label>
-      <input id="city" name="city" required />
+    <label for="city">City *</label>
+    <input id="city" name="city" required />
 
-      <label for="state">State/Province *</label>
-      <input id="state" name="state" required />
+    <label for="state">State/Province *</label>
+    <input id="state" name="state" required />
 
-      <label for="postal">Postal Code *</label>
-      <input id="postal" name="postal" required />
+    <label for="postal">Postal Code *</label>
+    <input id="postal" name="postal" required />
 
-      <label for="country">Country</label>
-      <input id="country" name="country" placeholder="United States" />
+    <label for="country">Country</label>
+    <input id="country" name="country" placeholder="United States" />
 
-      <label for="notes">Notes (dietary restrictions, plus-one name, etc.)</label>
-      <textarea id="notes" name="notes" rows="3"></textarea>
+    <label for="notes">Notes (dietary restrictions, plus-one name, etc.)</label>
+    <textarea id="notes" name="notes" rows="3"></textarea>
 
-      <button type="submit" id="submitBtn">Send Address</button>
-      <div class="success" id="ok">Thank you! Your info was submitted 🎉</div>
-      <div class="error" id="err">Something went wrong. Please try again later.</div>
-    </form>
-  </div>
+    <button type="submit" id="submitBtn">Send Address</button>
+    <div class="success" id="ok">Thank you! Your info was submitted 🎉</div>
+    <div class="error" id="err">Something went wrong. Please try again later.</div>
+  </form>
 
   <script>
     const GAS_WEB_APP_URL = "https://script.google.com/macros/s/PASTE_WEB_APP_URL_HERE/exec";
