@@ -1,0 +1,37 @@
+function doPost(e) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Form Responses");
+  const timestamp = new Date().toISOString();
+
+  const fullName = e.parameter.fullName || '';
+  const street = e.parameter.street || '';
+  const line2 = e.parameter.line2 || '';
+  const city = e.parameter.city || '';
+  const state = e.parameter.state || '';
+  const postal = e.parameter.postal || '';
+  const country = e.parameter.country || '';
+
+  // Log for debugging
+  Logger.log("Received POST request with parameters: " + JSON.stringify(e.parameter));
+
+  // Append data to sheet
+  sheet.appendRow([timestamp, fullName, street, line2, city, state, postal, country]);
+  Logger.log("Row successfully appended: " + [timestamp, fullName, street, line2, city, state, postal, country]);
+
+  // Send email notification
+  const email = "your-email@example.com"; // ← Replace with your email
+  const subject = "New Save the Date submission from " + fullName;
+  const message = `
+A new address has been submitted:
+
+Full Name: ${fullName}
+Street Address: ${street}
+Line 2: ${line2}
+City: ${city}
+State/Province: ${state}
+Postal Code: ${postal}
+Country: ${country}
+  `;
+  MailApp.sendEmail(email, subject, message);
+
+  return ContentService.createTextOutput("Success");
+}
