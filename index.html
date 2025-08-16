@@ -1,5 +1,5 @@
 <!--
-DIY Save‑the‑Date Microsite — Styled Version (no wrapper)
+DIY Save‑the‑Date Microsite — Styled Version (centered layout)
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -16,31 +16,45 @@ DIY Save‑the‑Date Microsite — Styled Version (no wrapper)
       font-family: 'Georgia', serif;
       background: url('https://github.com/ajhellen/Save-The-Date/raw/main/Save%20the%20date%20background.png?raw=true') center/cover repeat;
       color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .title-box {
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 2rem;
     }
     h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 3rem;
-      text-align: center;
       margin: 0 0 0.5rem;
     }
     h2 {
       font-size: 1rem;
       font-weight: 300;
-      text-align: center;
-      margin: 0 0 2rem;
+      margin: 0;
       letter-spacing: 1px;
     }
     form {
+      width: 100%;
       max-width: 700px;
-      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     label {
       font-weight: bold;
-      display: block;
+      width: 100%;
+      max-width: 600px;
       margin-top: 1rem;
+      display: block;
     }
     input, textarea {
       width: 100%;
+      max-width: 600px;
       padding: 0.75rem;
       margin-top: 0.25rem;
       border-radius: 8px;
@@ -49,7 +63,7 @@ DIY Save‑the‑Date Microsite — Styled Version (no wrapper)
     }
     button {
       margin-top: 1.5rem;
-      padding: 0.75rem;
+      padding: 0.75rem 2rem;
       font-size: 1rem;
       border-radius: 8px;
       background-color: #f8f4ef;
@@ -63,8 +77,10 @@ DIY Save‑the‑Date Microsite — Styled Version (no wrapper)
       padding: 1rem;
       margin-top: 1rem;
       border-radius: 8px;
-      max-width: 700px;
-      margin-inline: auto;
+      background: white;
+      color: #333;
+      max-width: 600px;
+      text-align: center;
     }
     .success {
       background: #ecfdf5;
@@ -77,8 +93,10 @@ DIY Save‑the‑Date Microsite — Styled Version (no wrapper)
   </style>
 </head>
 <body>
-  <h1>Save Our Date</h1>
-  <h2>Alex & Craig · July 25th, 2026</h2>
+  <div class="title-box">
+    <h1>Save Our Date</h1>
+    <h2>Alex & Craig · July 25th, 2026</h2>
+  </div>
   <form id="addrForm">
     <label for="fullName">Full Name *</label>
     <input id="fullName" name="fullName" required />
