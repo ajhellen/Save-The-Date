@@ -1,6 +1,4 @@
-<!--
-DIY Save‑the‑Date Microsite — Styled Version (form post workaround)
--->
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +18,7 @@ DIY Save‑the‑Date Microsite — Styled Version (form post workaround)
       flex-direction: column;
       align-items: center;
     }
+
     .title-box {
       background-color: rgba(0, 0, 0, 0.4);
       padding: 1rem 2rem;
@@ -27,17 +26,20 @@ DIY Save‑the‑Date Microsite — Styled Version (form post workaround)
       text-align: center;
       margin-bottom: 2rem;
     }
+
     h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 3rem;
       margin: 0 0 0.5rem;
     }
+
     h2 {
       font-size: 1rem;
       font-weight: 300;
       margin: 0;
       letter-spacing: 1px;
     }
+
     form {
       width: 100%;
       max-width: 700px;
@@ -45,6 +47,7 @@ DIY Save‑the‑Date Microsite — Styled Version (form post workaround)
       flex-direction: column;
       align-items: center;
     }
+
     label {
       font-weight: bold;
       width: 100%;
@@ -52,6 +55,7 @@ DIY Save‑the‑Date Microsite — Styled Version (form post workaround)
       margin-top: 1rem;
       display: block;
     }
+
     input {
       width: 100%;
       max-width: 600px;
@@ -61,6 +65,7 @@ DIY Save‑the‑Date Microsite — Styled Version (form post workaround)
       border: none;
       font-size: 1rem;
     }
+
     button {
       margin-top: 1.5rem;
       padding: 0.75rem 2rem;
@@ -72,6 +77,7 @@ DIY Save‑the‑Date Microsite — Styled Version (form post workaround)
       border: none;
       cursor: pointer;
     }
+
     .success, .error {
       display: none;
       padding: 1rem;
@@ -82,13 +88,38 @@ DIY Save‑the‑Date Microsite — Styled Version (form post workaround)
       max-width: 600px;
       text-align: center;
     }
+
     .success {
       background: #ecfdf5;
       color: #065f46;
     }
+
     .error {
       background: #fef2f2;
       color: #991b1b;
+    }
+
+    @media (max-width: 600px) {
+      .title-box {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      h2 {
+        font-size: 0.95rem;
+      }
+
+      input, label, button {
+        font-size: 1rem;
+        width: 100%;
+      }
+
+      form {
+        padding: 0 10px;
+      }
     }
   </style>
 </head>
