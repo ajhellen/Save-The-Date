@@ -143,6 +143,10 @@ DIY Save‑the‑Date Microsite — Styled Version (form post workaround)
         ok.style.display = 'block';
         err.style.display = 'none';
         form.reset();
+
+        setTimeout(() => {
+          window.location.href = 'https://ajhellen.github.io/Save-The-Date/thanks.html';
+        }, 1500);
       })
       .catch(() => {
         ok.style.display = 'none';
