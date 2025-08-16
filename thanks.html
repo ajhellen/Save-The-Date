@@ -2,46 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Thank You!</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Georgia&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: Georgia, serif;
-      background: url('https://github.com/ajhellen/Save-The-Date/raw/main/Save%20the%20date%20background.png?raw=true') center/cover repeat;
+      font-family: 'Georgia', serif;
+      background: url('https://github.com/ajhellen/Save-The-Date/raw/main/Save%20the%20date%20background.png?raw=true') no-repeat center center fixed;
+      background-size: cover;
       color: white;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      padding: 100px 20px;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      max-width: 700px;
+      margin: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
     }
 
     h1 {
-      font-family: 'Great Vibes', cursive;
       font-size: 3em;
-      margin-bottom: 0.25em;
+      margin-bottom: 0.3em;
     }
 
     p {
-      font-size: 1.2em;
-      max-width: 600px;
-      padding: 0 20px;
-    }
-
-    .wrapper {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 2em;
-      border-radius: 12px;
+      font-size: 1.4em;
+      line-height: 1.6em;
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
+  <div class="overlay">
     <h1>Thank You!</h1>
-    <p>Your address has been received. We're so excited to celebrate with you!</p>
+    <p>💌 Thank you so much for sharing your address with us!<br><br>
+    📬 A physical copy of our Save the Date will be arriving in your mailbox soon,<br>
+    followed by a formal invitation.<br><br>
+    🥂 We can’t wait to celebrate together on <strong>July 25th, 2026</strong> in <strong>Livingston, MT</strong>!</p>
   </div>
+
+  <!-- Confetti animation -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    const duration = 4000;
+    const end = Date.now() + duration;
+
+    (function frame() {
+      confetti({
+        particleCount: 5,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+        colors: ['#C0C0C0', '#D3D3D3', '#A9A9A9']
+      });
+      confetti({
+        particleCount: 5,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        colors: ['#C0C0C0', '#D3D3D3', '#A9A9A9']
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    })();
+  </script>
 </body>
 </html>
